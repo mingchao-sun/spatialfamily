@@ -1,0 +1,156 @@
+---
+name: swm
+title: Spatial Weights
+jas: '1.2'
+version: '1.0.0'
+menuGroup: Spatial
+menuSubgroup: Weights
+menuTitle: Spatial Weights
+menuSubtitle: Neighbours and weights matrix
+
+options:
+    - name: data
+      type: Data
+
+    - name: idVar
+      title: Unit id
+      type: Variable
+      permitted:
+          - numeric
+          - factor
+          - id
+
+    - name: xVar
+      title: X / longitude
+      type: Variable
+      suggested:
+          - continuous
+      permitted:
+          - numeric
+
+    - name: yVar
+      title: Y / latitude
+      type: Variable
+      suggested:
+          - continuous
+      permitted:
+          - numeric
+
+    - name: wSource
+      title: Spatial weights from
+      type: List
+      options:
+          - name: coords
+            title: Coordinates (x, y columns)
+          - name: boundary
+            title: Boundary file (shapefile or GeoJSON)
+          - name: adjacency
+            title: Neighbour list file (edge list, GAL, GWT)
+      default: coords
+
+    - name: wFile
+      title: File path
+      type: String
+      default: ''
+
+    - name: wIdField
+      title: Id field in the boundary file
+      type: String
+      default: ''
+
+    - name: wMethod
+      title: Neighbours defined by
+      type: List
+      options:
+          - name: auto
+            title: Default for the source (k nearest / queen)
+          - name: knn
+            title: k nearest neighbours
+          - name: dist
+            title: Distance band
+          - name: idw
+            title: Inverse distance
+          - name: queen
+            title: Queen contiguity (boundary file)
+          - name: rook
+            title: Rook contiguity (boundary file)
+      default: auto
+
+    - name: wK
+      title: Number of neighbours (k)
+      type: Integer
+      default: 5
+      min: 1
+      max: 500
+
+    - name: wDist
+      title: Distance threshold (0 = automatic)
+      type: Number
+      default: 0
+      min: 0
+
+    - name: wPower
+      title: Distance decay exponent
+      type: Number
+      default: 1
+      min: 0
+
+    - name: wCutoff
+      title: Distance cutoff for inverse distance (0 = none)
+      type: Number
+      default: 0
+      min: 0
+
+    - name: wOrder
+      title: Order of neighbours
+      type: Integer
+      default: 1
+      min: 1
+      max: 10
+
+    - name: wCumul
+      title: Include lower orders
+      type: Bool
+      default: false
+
+    - name: wSymm
+      title: Make links symmetric
+      type: Bool
+      default: false
+
+    - name: wLonLat
+      title: Coordinates are longitude / latitude (distances in km)
+      type: Bool
+      default: false
+
+    - name: wStyle
+      title: Weights style
+      type: List
+      options:
+          - name: W
+            title: Row-standardised
+          - name: B
+            title: As built (binary or distance)
+          - name: C
+            title: Globally standardised
+      default: W
+
+    - name: showGuide
+      title: Data and setup guide
+      type: Bool
+      default: false
+
+    - name: showHelp
+      title: Method notes
+      type: Bool
+      default: false
+
+    - name: linkPlot
+      title: Connectivity map
+      type: Bool
+      default: true
+
+    - name: histPlot
+      title: Histogram of the number of neighbours
+      type: Bool
+      default: false

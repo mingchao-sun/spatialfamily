@@ -1,0 +1,7 @@
+build/
+dist/
+temp/
+*.jmo
+tests/out/
+Rplots.pdf
+.Rhistory

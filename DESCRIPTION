@@ -1,0 +1,23 @@
+Package: spatialfamily
+Type: Package
+Title: Spatial Statistics and Spatial Econometrics Family for jamovi
+Version: 0.2.0
+Author: Mingchao Sun
+Maintainer: Mingchao Sun <mingchao.sun@hotmail.com>
+URL: https://github.com/mingchao-sun/spatialfamily
+BugReports: https://github.com/mingchao-sun/spatialfamily/issues
+Description: Spatial weights from coordinates, boundary files (shapefile, GeoJSON)
+    or neighbour lists; global and local spatial autocorrelation (Moran's I,
+    Geary's C, Getis-Ord G, LISA, Gi*); spatial regression by maximum likelihood
+    (SAR, SEM, SDM, SDEM, SAC, SLX) for cross-sections and fixed-effects panels
+    with direct, indirect and total effects; geographically weighted regression;
+    industrial agglomeration indices; PPML gravity models; and difference-in-
+    differences with spatial spillovers. Written in base R and Matrix.
+License: GPL-3
+Encoding: UTF-8
+Imports:
+    jmvcore (>= 2.3.4),
+    R6,
+    ggplot2,
+    Matrix,
+    jsonlite

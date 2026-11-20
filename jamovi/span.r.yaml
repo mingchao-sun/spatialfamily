@@ -1,0 +1,163 @@
+---
+name: span
+title: Spatial Panel Regression
+jrs: '1.1'
+
+items:
+    - name: guide
+      title: Data and setup guide
+      type: Html
+      visible: (showGuide)
+
+    - name: helpText
+      title: Method notes
+      type: Html
+      visible: (showHelp)
+
+    - name: notes
+      title: Notes
+      type: Html
+      visible: true
+
+    - name: coef
+      title: Coefficients
+      type: Table
+      refs:
+          - elhorst2014
+          - lesage2009
+      clearWith:
+          - idVar
+          - xVar
+          - yVar
+          - wSource
+          - wFile
+          - wIdField
+          - wMethod
+          - wK
+          - wDist
+          - wPower
+          - wCutoff
+          - wOrder
+          - wCumul
+          - wSymm
+          - wLonLat
+          - wStyle
+          - dep
+          - covs
+          - noLag
+          - timeVar
+          - model
+          - panelEffects
+          - level
+      columns:
+          - name: term
+            title: ''
+            type: text
+          - name: est
+            title: Estimate
+            type: number
+          - name: se
+            title: Std. error
+            type: number
+          - name: z
+            title: z / t
+            type: number
+          - name: p
+            title: p
+            type: number
+            format: zto,pvalue
+          - name: lo
+            title: Lower
+            type: number
+          - name: hi
+            title: Upper
+            type: number
+
+    - name: fit
+      title: Model fit
+      type: Table
+      clearWith:
+          - idVar
+          - xVar
+          - yVar
+          - wSource
+          - wFile
+          - wIdField
+          - wMethod
+          - wK
+          - wDist
+          - wPower
+          - wCutoff
+          - wOrder
+          - wCumul
+          - wSymm
+          - wLonLat
+          - wStyle
+          - dep
+          - covs
+          - noLag
+          - timeVar
+          - model
+          - panelEffects
+      columns:
+          - name: item
+            title: ''
+            type: text
+          - name: value
+            title: ''
+            type: number
+          - name: p
+            title: p
+            type: number
+            format: zto,pvalue
+
+    - name: effectsTable
+      title: Average effects of the covariates
+      type: Table
+      visible: (showEffects)
+      clearWith:
+          - idVar
+          - xVar
+          - yVar
+          - wSource
+          - wFile
+          - wIdField
+          - wMethod
+          - wK
+          - wDist
+          - wPower
+          - wCutoff
+          - wOrder
+          - wCumul
+          - wSymm
+          - wLonLat
+          - wStyle
+          - dep
+          - covs
+          - noLag
+          - timeVar
+          - model
+          - panelEffects
+          - showEffects
+          - nsim
+          - seed
+      columns:
+          - name: term
+            title: Covariate
+            type: text
+          - name: kind
+            title: Effect
+            type: text
+          - name: est
+            title: Estimate
+            type: number
+          - name: se
+            title: Std. error
+            type: number
+          - name: z
+            title: z
+            type: number
+          - name: p
+            title: p
+            type: number
+            format: zto,pvalue

@@ -1,0 +1,116 @@
+---
+name: spdid
+title: Spatial DID (Spillovers)
+jrs: '1.1'
+
+items:
+    - name: guide
+      title: Data and setup guide
+      type: Html
+      visible: (showGuide)
+
+    - name: helpText
+      title: Method notes
+      type: Html
+      visible: (showHelp)
+
+    - name: notes
+      title: Notes
+      type: Html
+      visible: true
+
+    - name: coef
+      title: Treatment and spillover effects
+      type: Table
+      refs:
+          - conley1999
+          - butts2021
+      clearWith:
+          - idVar
+          - xVar
+          - yVar
+          - wSource
+          - wFile
+          - wIdField
+          - wMethod
+          - wK
+          - wDist
+          - wPower
+          - wCutoff
+          - wOrder
+          - wCumul
+          - wSymm
+          - wLonLat
+          - wStyle
+          - dep
+          - covs
+          - treat
+          - timeVar
+          - rings
+          - lagTreat
+          - effects
+          - se
+          - conleyBw
+          - conleyLag
+          - level
+      columns:
+          - name: term
+            title: ''
+            type: text
+          - name: est
+            title: Estimate
+            type: number
+          - name: se
+            title: Std. error
+            type: number
+          - name: z
+            title: t
+            type: number
+          - name: p
+            title: p
+            type: number
+            format: zto,pvalue
+          - name: lo
+            title: Lower
+            type: number
+          - name: hi
+            title: Upper
+            type: number
+
+    - name: fit
+      title: Sample and fit
+      type: Table
+      clearWith:
+          - idVar
+          - xVar
+          - yVar
+          - wSource
+          - wFile
+          - wIdField
+          - wMethod
+          - wK
+          - wDist
+          - wPower
+          - wCutoff
+          - wOrder
+          - wCumul
+          - wSymm
+          - wLonLat
+          - wStyle
+          - dep
+          - covs
+          - treat
+          - timeVar
+          - rings
+          - lagTreat
+          - effects
+          - se
+          - conleyBw
+          - conleyLag
+      columns:
+          - name: item
+            title: ''
+            type: text
+          - name: value
+            title: ''
+            type: number

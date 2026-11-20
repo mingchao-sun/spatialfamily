@@ -1,0 +1,153 @@
+---
+name: agg
+title: Industrial Agglomeration
+jrs: '1.1'
+
+items:
+    - name: guide
+      title: Data and setup guide
+      type: Html
+      visible: (showGuide)
+
+    - name: helpText
+      title: Method notes
+      type: Html
+      visible: (showHelp)
+
+    - name: notes
+      title: Notes
+      type: Html
+      visible: true
+
+    - name: industryTable
+      title: Concentration of the industries
+      type: Table
+      refs:
+          - ellison1997
+          - krugman1991
+      clearWith:
+          - idVar
+          - xVar
+          - yVar
+          - wSource
+          - wFile
+          - wIdField
+          - wMethod
+          - wK
+          - wDist
+          - wPower
+          - wCutoff
+          - wOrder
+          - wCumul
+          - wSymm
+          - wLonLat
+          - wStyle
+          - region
+          - industry
+          - value
+          - firms
+          - sortBy
+      columns:
+          - name: industry
+            title: Industry
+            type: text
+          - name: total
+            title: Total
+            type: number
+          - name: share
+            title: Share of the total
+            type: number
+          - name: nreg
+            title: Regions present
+            type: integer
+          - name: hhi
+            title: Herfindahl (regional shares)
+            type: number
+          - name: G
+            title: Raw concentration G
+            type: number
+          - name: H
+            title: Plant Herfindahl H
+            type: number
+          - name: gamma
+            title: EG gamma
+            type: number
+          - name: gini
+            title: Locational Gini
+            type: number
+
+    - name: regionTable
+      title: Specialisation of the regions
+      type: Table
+      visible: (showRegion)
+      refs:
+          - krugman1991
+      clearWith:
+          - idVar
+          - xVar
+          - yVar
+          - wSource
+          - wFile
+          - wIdField
+          - wMethod
+          - wK
+          - wDist
+          - wPower
+          - wCutoff
+          - wOrder
+          - wCumul
+          - wSymm
+          - wLonLat
+          - wStyle
+          - region
+          - industry
+          - value
+          - firms
+          - showRegion
+      columns:
+          - name: region
+            title: Region
+            type: text
+          - name: total
+            title: Total
+            type: number
+          - name: share
+            title: Share of the total
+            type: number
+          - name: hhi
+            title: Herfindahl (industry shares)
+            type: number
+          - name: entropy
+            title: Entropy
+            type: number
+          - name: krugman
+            title: Krugman index
+            type: number
+
+    - name: saveLQ
+      title: Location quotient
+      type: Output
+      varTitle: Location quotient
+      varDescription: Location quotient of the region-industry cell
+      measureType: continuous
+      clearWith:
+          - idVar
+          - xVar
+          - yVar
+          - wSource
+          - wFile
+          - wIdField
+          - wMethod
+          - wK
+          - wDist
+          - wPower
+          - wCutoff
+          - wOrder
+          - wCumul
+          - wSymm
+          - wLonLat
+          - wStyle
+          - region
+          - industry
+          - value
+          - firms

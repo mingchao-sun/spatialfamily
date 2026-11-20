@@ -1,0 +1,78 @@
+---
+name: agg
+title: Industrial Agglomeration
+jas: '1.2'
+version: '1.0.0'
+menuGroup: Spatial
+menuSubgroup: Agglomeration
+menuTitle: Industrial Agglomeration
+menuSubtitle: Location quotients, Gini, Ellison-Glaeser, Krugman
+
+options:
+    - name: data
+      type: Data
+
+    - name: region
+      title: Region
+      type: Variable
+      permitted:
+          - numeric
+          - factor
+          - id
+
+    - name: industry
+      title: Industry
+      type: Variable
+      permitted:
+          - numeric
+          - factor
+          - id
+
+    - name: value
+      title: Employment (or output)
+      type: Variable
+      suggested:
+          - continuous
+      permitted:
+          - numeric
+
+    - name: firms
+      title: Number of establishments (optional)
+      type: Variable
+      suggested:
+          - continuous
+      permitted:
+          - numeric
+
+    - name: showRegion
+      title: Regional specialisation (Krugman index, Herfindahl)
+      type: Bool
+      default: true
+
+    - name: sortBy
+      title: Sort industries by
+      type: List
+      options:
+          - name: gamma
+            title: Ellison-Glaeser gamma
+          - name: gini
+            title: Locational Gini
+          - name: total
+            title: Size
+          - name: name
+            title: Name
+      default: gamma
+
+    - name: showGuide
+      title: Data and setup guide
+      type: Bool
+      default: false
+
+    - name: showHelp
+      title: Method notes
+      type: Bool
+      default: false
+
+    - name: saveLQ
+      title: Location quotient
+      type: Output

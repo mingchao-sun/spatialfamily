@@ -1,0 +1,312 @@
+---
+name: gwr
+title: Geographically Weighted Regression
+jrs: '1.1'
+
+items:
+    - name: guide
+      title: Data and setup guide
+      type: Html
+      visible: (showGuide)
+
+    - name: helpText
+      title: Method notes
+      type: Html
+      visible: (showHelp)
+
+    - name: notes
+      title: Notes
+      type: Html
+      visible: true
+
+    - name: summary
+      title: 'Coefficients: global (OLS) and geographically weighted'
+      type: Table
+      refs:
+          - brunsdon1996
+          - gwmodel
+      clearWith:
+          - idVar
+          - xVar
+          - yVar
+          - wSource
+          - wFile
+          - wIdField
+          - wMethod
+          - wK
+          - wDist
+          - wPower
+          - wCutoff
+          - wOrder
+          - wCumul
+          - wSymm
+          - wLonLat
+          - wStyle
+          - dep
+          - covs
+          - xVar
+          - yVar
+          - wLonLat
+          - kernel
+          - bwType
+          - bwMethod
+          - bw
+      columns:
+          - name: term
+            title: ''
+            type: text
+          - name: ols
+            title: OLS
+            type: number
+          - name: olsse
+            title: OLS s.e.
+            type: number
+          - name: min
+            title: Minimum
+            type: number
+          - name: q1
+            title: 1st quartile
+            type: number
+          - name: med
+            title: Median
+            type: number
+          - name: q3
+            title: 3rd quartile
+            type: number
+          - name: max
+            title: Maximum
+            type: number
+          - name: nsig
+            title: '% units |t| > 1.96'
+            type: number
+
+    - name: diag
+      title: Diagnostics
+      type: Table
+      clearWith:
+          - idVar
+          - xVar
+          - yVar
+          - wSource
+          - wFile
+          - wIdField
+          - wMethod
+          - wK
+          - wDist
+          - wPower
+          - wCutoff
+          - wOrder
+          - wCumul
+          - wSymm
+          - wLonLat
+          - wStyle
+          - dep
+          - covs
+          - xVar
+          - yVar
+          - wLonLat
+          - kernel
+          - bwType
+          - bwMethod
+          - bw
+      columns:
+          - name: item
+            title: ''
+            type: text
+          - name: gwr
+            title: GWR
+            type: number
+          - name: ols
+            title: OLS
+            type: number
+
+    - name: local
+      title: Local estimates
+      type: Table
+      visible: (showLocal)
+      clearWith:
+          - idVar
+          - xVar
+          - yVar
+          - wSource
+          - wFile
+          - wIdField
+          - wMethod
+          - wK
+          - wDist
+          - wPower
+          - wCutoff
+          - wOrder
+          - wCumul
+          - wSymm
+          - wLonLat
+          - wStyle
+          - dep
+          - covs
+          - xVar
+          - yVar
+          - wLonLat
+          - kernel
+          - bwType
+          - bwMethod
+          - bw
+          - idVar
+          - showLocal
+      columns:
+          - name: id
+            title: Unit
+            type: text
+          - name: x
+            title: X
+            type: number
+          - name: y
+            title: Y
+            type: number
+          - name: fitted
+            title: Fitted
+            type: number
+          - name: r2
+            title: Local R2
+            type: number
+
+    - name: mapPlots
+      title: Map
+      type: Array
+      items: (covs)
+      visible: (maps)
+      template:
+          title: $key
+          type: Image
+          width: 520
+          height: 440
+          renderFun: .plotMap
+      clearWith:
+          - idVar
+          - xVar
+          - yVar
+          - wSource
+          - wFile
+          - wIdField
+          - wMethod
+          - wK
+          - wDist
+          - wPower
+          - wCutoff
+          - wOrder
+          - wCumul
+          - wSymm
+          - wLonLat
+          - wStyle
+          - dep
+          - covs
+          - xVar
+          - yVar
+          - wLonLat
+          - kernel
+          - bwType
+          - bwMethod
+          - bw
+          - maps
+          - mapStat
+
+    - name: mapInt
+      title: Intercept
+      type: Image
+      width: 520
+      height: 440
+      renderFun: .plotMapInt
+      visible: (maps)
+      clearWith:
+          - idVar
+          - xVar
+          - yVar
+          - wSource
+          - wFile
+          - wIdField
+          - wMethod
+          - wK
+          - wDist
+          - wPower
+          - wCutoff
+          - wOrder
+          - wCumul
+          - wSymm
+          - wLonLat
+          - wStyle
+          - dep
+          - covs
+          - xVar
+          - yVar
+          - wLonLat
+          - kernel
+          - bwType
+          - bwMethod
+          - bw
+          - maps
+          - mapStat
+
+    - name: saveR2
+      title: Local R-squared
+      type: Output
+      varTitle: GWR local R2
+      varDescription: Local R-squared of the geographically weighted regression
+      measureType: continuous
+      clearWith:
+          - idVar
+          - xVar
+          - yVar
+          - wSource
+          - wFile
+          - wIdField
+          - wMethod
+          - wK
+          - wDist
+          - wPower
+          - wCutoff
+          - wOrder
+          - wCumul
+          - wSymm
+          - wLonLat
+          - wStyle
+          - dep
+          - covs
+          - xVar
+          - yVar
+          - wLonLat
+          - kernel
+          - bwType
+          - bwMethod
+          - bw
+
+    - name: saveResid
+      title: Residuals
+      type: Output
+      varTitle: GWR residuals
+      varDescription: Residuals of the geographically weighted regression
+      measureType: continuous
+      clearWith:
+          - idVar
+          - xVar
+          - yVar
+          - wSource
+          - wFile
+          - wIdField
+          - wMethod
+          - wK
+          - wDist
+          - wPower
+          - wCutoff
+          - wOrder
+          - wCumul
+          - wSymm
+          - wLonLat
+          - wStyle
+          - dep
+          - covs
+          - xVar
+          - yVar
+          - wLonLat
+          - kernel
+          - bwType
+          - bwMethod
+          - bw

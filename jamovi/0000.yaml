@@ -1,0 +1,146 @@
+---
+title: Spatial Statistics Family
+name: spatialfamily
+version: 0.2.0
+jms: '1.0'
+authors:
+  - Mingchao Sun
+maintainer: Mingchao Sun <mingchao.sun@hotmail.com>
+date: '2026-11-20'
+type: R
+description: >-
+  Spatial analysis for urban, regional and spatial economics: spatial weights
+  from coordinates, boundary files (shapefile, GeoJSON) or neighbour lists;
+  Moran's I, Geary's C and Getis-Ord G; local indicators (LISA, Gi*); spatial
+  regression by maximum likelihood for cross-sections and fixed-effects panels
+  (SAR, SEM, SDM, SDEM, SAC, SLX) with direct, indirect and total effects;
+  geographically weighted regression; industrial agglomeration indices (Gini,
+  Ellison-Glaeser, Krugman); PPML gravity models; and difference-in-differences
+  with spatial spillovers (distance rings, Conley standard errors).
+datasets:
+  - name: 'Columbus, Ohio: neighbourhood crime'
+    path: columbus.csv
+    description: >-
+      49 neighbourhoods (Anselin, 1988; spdep package). CRIME burglaries and
+      vehicle thefts per 1000 households, INC income, HOVAL house value, DISCBD
+      distance to the centre, X and Y coordinates. Spatial weights: use the
+      coordinates X, Y, or type sample:columbus.geojson (Boundary file, id field
+      id, queen contiguity) or sample:columbus_edges.csv (Neighbour list file,
+      the textbook weights) in File path, with id as the unit id.
+  - name: 'North Carolina: SIDS by county'
+    path: nc_sids.csv
+    description: >-
+      100 counties (Cressie, 1993; sf package). fips id, lon / lat of the
+      centroids, births, sudden infant deaths 1974 and 1979 and non-white
+      births. Spatial weights: use the coordinates lon, lat (tick longitude /
+      latitude), or type sample:nc.shp or sample:nc.geojson (Boundary file, id
+      field fips, queen contiguity) in File path, with fips as the unit id.
+  - name: 'Spatial panel: simulated, Columbus layout'
+    path: columbus_panel.csv
+    description: >-
+      49 units x 6 periods (long format, unit id id, period time), simulated
+      with unit and time effects and a spatial lag (rho = 0.4) on the Columbus
+      neighbourhoods; y depends on x1 (1.5) and x2 (-0.8). Use Spatial Panel
+      Regression with the neighbour list sample:columbus_edges.csv, the unit id
+      id and the period time.
+  - name: 'Industrial agglomeration: simulated regions and industries'
+    path: region_industry.csv
+    description: >-
+      25 regions x 6 industries (long format): employment and number of
+      establishments. Mining (one region), Textiles, Software and Autos are
+      concentrated, Food and Retail follow total employment. Use Industrial
+      Agglomeration with region, industry, employment and establishments.
+  - name: 'Gravity: simulated bilateral trade of 20 countries'
+    path: gravity_sim.csv
+    description: >-
+      380 country pairs with trade flows (157 zeros), distance (dist, ldist),
+      sameRegion and language dummies. Simulated with distance elasticity -0.9,
+      sameRegion +0.6, language +0.4 and origin and destination effects. Use
+      Gravity Model (PPML) with flow trade, covariates ldist, sameRegion and
+      language, origin and destination, and origin and destination fixed
+      effects.
+  - name: 'Spatial DID: simulated policy with spillovers'
+    path: spillover_did.csv
+    description: >-
+      100 units on a 100 x 100 km square (cx, cy in km) over 2001-2010; the 20
+      units nearest to a point are treated from 2006 (treat). Simulated effect 2
+      on the treated, spillovers 1.0 within 10 km and 0.4 within 10-20 km. Use
+      Spatial DID with outcome, treatment treat, covariate x1, period year, unit
+      id unit, coordinates cx and cy, and rings 10, 20.
+analyses:
+  - name: swm
+    title: Spatial Weights
+    menuGroup: Spatial
+    menuSubgroup: Weights
+    menuTitle: Spatial Weights
+    menuSubtitle: Neighbours and weights matrix
+    ns: spatialfamily
+    category: analyses
+  - name: moran
+    title: Global Spatial Autocorrelation
+    menuGroup: Spatial
+    menuSubgroup: Autocorrelation
+    menuTitle: Global (Moran, Geary, G)
+    menuSubtitle: Is the variable spatially clustered?
+    ns: spatialfamily
+    category: analyses
+  - name: lisa
+    title: Local Spatial Autocorrelation
+    menuGroup: Spatial
+    menuSubgroup: Autocorrelation
+    menuTitle: Local (LISA, Getis-Ord Gi*)
+    menuSubtitle: Where are the clusters and hot spots?
+    ns: spatialfamily
+    category: analyses
+  - name: sreg
+    title: Spatial Regression
+    menuGroup: Spatial
+    menuSubgroup: Regression
+    menuTitle: Spatial Regression
+    menuSubtitle: SAR, SEM, SDM, SDEM, SAC, SLX (maximum likelihood)
+    ns: spatialfamily
+    category: analyses
+  - name: span
+    title: Spatial Panel Regression
+    menuGroup: Spatial
+    menuSubgroup: Regression
+    menuTitle: Spatial Panel Regression
+    menuSubtitle: Fixed effects SAR, SEM, SDM, SDEM, SLX (maximum likelihood)
+    ns: spatialfamily
+    category: analyses
+  - name: gwr
+    title: Geographically Weighted Regression
+    menuGroup: Spatial
+    menuSubgroup: Regression
+    menuTitle: Geographically Weighted Regression
+    menuSubtitle: Local coefficients that vary over space (GWR)
+    ns: spatialfamily
+    category: analyses
+  - name: agg
+    title: Industrial Agglomeration
+    menuGroup: Spatial
+    menuSubgroup: Agglomeration
+    menuTitle: Industrial Agglomeration
+    menuSubtitle: Location quotients, Gini, Ellison-Glaeser, Krugman
+    ns: spatialfamily
+    category: analyses
+  - name: gravity
+    title: Gravity Model (PPML)
+    menuGroup: Spatial
+    menuSubgroup: Gravity
+    menuTitle: Gravity Model (PPML)
+    menuSubtitle: Poisson pseudo-ML with high-dimensional fixed effects
+    ns: spatialfamily
+    category: analyses
+  - name: spdid
+    title: Spatial DID (Spillovers)
+    menuGroup: Spatial
+    menuSubgroup: Causal
+    menuTitle: Spatial DID (Spillovers)
+    menuSubtitle: TWFE with distance rings and spillover to neighbours
+    ns: spatialfamily
+    category: analyses
+usesNative: true
+minApp: 1.0.8
+
+...

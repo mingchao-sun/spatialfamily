@@ -1,0 +1,106 @@
+---
+name: moran
+title: Global Spatial Autocorrelation
+jrs: '1.1'
+
+items:
+    - name: guide
+      title: Data and setup guide
+      type: Html
+      visible: (showGuide)
+
+    - name: helpText
+      title: Method notes
+      type: Html
+      visible: (showHelp)
+
+    - name: notes
+      title: Notes
+      type: Html
+      visible: true
+
+    - name: global
+      title: Global spatial autocorrelation
+      type: Table
+      refs:
+          - cliff1981
+          - moran1950
+          - spdep
+      clearWith:
+          - idVar
+          - xVar
+          - yVar
+          - wSource
+          - wFile
+          - wIdField
+          - wMethod
+          - wK
+          - wDist
+          - wPower
+          - wCutoff
+          - wOrder
+          - wCumul
+          - wSymm
+          - wLonLat
+          - wStyle
+          - vars
+          - inference
+          - alt
+          - nperm
+          - seed
+          - geary
+          - getisG
+      columns:
+          - name: var
+            title: Variable
+            type: text
+          - name: stat
+            title: Statistic
+            type: text
+          - name: est
+            title: Estimate
+            type: number
+          - name: exp
+            title: Expected
+            type: number
+          - name: sd
+            title: Std. deviate
+            type: number
+          - name: z
+            title: z
+            type: number
+          - name: p
+            title: p
+            type: number
+            format: zto,pvalue
+
+    - name: scatterPlots
+      title: Moran scatterplot
+      type: Array
+      items: (vars)
+      visible: (scatter)
+      template:
+          title: $key
+          type: Image
+          width: 480
+          height: 420
+          renderFun: .plotScatter
+      clearWith:
+          - idVar
+          - xVar
+          - yVar
+          - wSource
+          - wFile
+          - wIdField
+          - wMethod
+          - wK
+          - wDist
+          - wPower
+          - wCutoff
+          - wOrder
+          - wCumul
+          - wSymm
+          - wLonLat
+          - wStyle
+          - vars
+          - scatter

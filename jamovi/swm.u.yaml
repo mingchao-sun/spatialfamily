@@ -1,0 +1,102 @@
+name: swm
+title: Spatial Weights
+jus: '3.0'
+stage: 0
+compilerMode: tame
+children:
+    - type: VariableSupplier
+      persistentItems: false
+      stretchFactor: 1
+      children:
+          - type: TargetLayoutBox
+            label: Unit id (needed for files, optional for coordinates)
+            children:
+                - type: VariablesListBox
+                  name: idVar
+                  isTarget: true
+                  height: small
+                  maxItemCount: 1
+          - type: TargetLayoutBox
+            label: X / longitude (coordinates)
+            children:
+                - type: VariablesListBox
+                  name: xVar
+                  isTarget: true
+                  height: small
+                  maxItemCount: 1
+          - type: TargetLayoutBox
+            label: Y / latitude (coordinates)
+            children:
+                - type: VariablesListBox
+                  name: yVar
+                  isTarget: true
+                  height: small
+                  maxItemCount: 1
+
+    - type: CollapseBox
+      label: Spatial weights
+      collapsed: false
+      children:
+          - type: ComboBox
+            name: wSource
+          - type: TextBox
+            name: wFile
+            label: File path
+            format: string
+            stretchFactor: 1
+            enable: (wSource:boundary || wSource:adjacency)
+          - type: Label
+            label: 'Tip: Shift + right-click the file in File Explorer,'
+            enable: (wSource:boundary || wSource:adjacency)
+          - type: Label
+            label: 'choose Copy as path, then paste it here (or sample:nc.shp).'
+            enable: (wSource:boundary || wSource:adjacency)
+          - type: TextBox
+            name: wIdField
+            label: Id field in the boundary file
+            format: string
+            stretchFactor: 1
+            enable: (wSource:boundary)
+          - type: ComboBox
+            name: wMethod
+          - type: TextBox
+            name: wK
+            label: Number of neighbours (k)
+            format: number
+          - type: TextBox
+            name: wDist
+            label: Distance threshold (0 = automatic)
+            format: number
+          - type: TextBox
+            name: wPower
+            label: Distance decay exponent
+            format: number
+          - type: TextBox
+            name: wCutoff
+            label: Distance cutoff (0 = none)
+            format: number
+          - type: TextBox
+            name: wOrder
+            label: Order of neighbours
+            format: number
+          - type: CheckBox
+            name: wCumul
+          - type: CheckBox
+            name: wSymm
+          - type: CheckBox
+            name: wLonLat
+          - type: ComboBox
+            name: wStyle
+    - type: CheckBox
+      name: linkPlot
+    - type: CheckBox
+      name: histPlot
+
+    - type: CollapseBox
+      label: Output
+      collapsed: true
+      children:
+          - type: CheckBox
+            name: showGuide
+          - type: CheckBox
+            name: showHelp

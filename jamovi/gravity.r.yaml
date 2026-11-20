@@ -1,0 +1,123 @@
+---
+name: gravity
+title: Gravity Model (PPML)
+jrs: '1.1'
+
+items:
+    - name: guide
+      title: Data and setup guide
+      type: Html
+      visible: (showGuide)
+
+    - name: helpText
+      title: Method notes
+      type: Html
+      visible: (showHelp)
+
+    - name: notes
+      title: Notes
+      type: Html
+      visible: true
+
+    - name: coef
+      title: PPML coefficients
+      type: Table
+      refs:
+          - santossilva2006
+          - correia2020
+      clearWith:
+          - idVar
+          - xVar
+          - yVar
+          - wSource
+          - wFile
+          - wIdField
+          - wMethod
+          - wK
+          - wDist
+          - wPower
+          - wCutoff
+          - wOrder
+          - wCumul
+          - wSymm
+          - wLonLat
+          - wStyle
+          - dep
+          - covs
+          - origin
+          - dest
+          - timeVar
+          - feOrigin
+          - feDest
+          - fePair
+          - feOrigTime
+          - feDestTime
+          - feTime
+          - cluster
+          - level
+      columns:
+          - name: term
+            title: ''
+            type: text
+          - name: est
+            title: Estimate
+            type: number
+          - name: se
+            title: Std. error
+            type: number
+          - name: z
+            title: z
+            type: number
+          - name: p
+            title: p
+            type: number
+            format: zto,pvalue
+          - name: lo
+            title: Lower
+            type: number
+          - name: hi
+            title: Upper
+            type: number
+          - name: pct
+            title: '% change in flow'
+            type: number
+
+    - name: fit
+      title: Model fit
+      type: Table
+      clearWith:
+          - idVar
+          - xVar
+          - yVar
+          - wSource
+          - wFile
+          - wIdField
+          - wMethod
+          - wK
+          - wDist
+          - wPower
+          - wCutoff
+          - wOrder
+          - wCumul
+          - wSymm
+          - wLonLat
+          - wStyle
+          - dep
+          - covs
+          - origin
+          - dest
+          - timeVar
+          - feOrigin
+          - feDest
+          - fePair
+          - feOrigTime
+          - feDestTime
+          - feTime
+          - cluster
+      columns:
+          - name: item
+            title: ''
+            type: text
+          - name: value
+            title: ''
+            type: number

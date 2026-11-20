@@ -1,0 +1,82 @@
+name: gravity
+title: Gravity Model (PPML)
+jus: '3.0'
+stage: 0
+compilerMode: tame
+children:
+    - type: VariableSupplier
+      persistentItems: false
+      stretchFactor: 1
+      children:
+          - type: TargetLayoutBox
+            label: Flow
+            children:
+                - type: VariablesListBox
+                  name: dep
+                  isTarget: true
+                  maxItemCount: 1
+          - type: TargetLayoutBox
+            label: Covariates (e.g. log distance, contiguity)
+            children:
+                - type: VariablesListBox
+                  name: covs
+                  isTarget: true
+          - type: TargetLayoutBox
+            label: Origin
+            children:
+                - type: VariablesListBox
+                  name: origin
+                  isTarget: true
+                  height: small
+                  maxItemCount: 1
+          - type: TargetLayoutBox
+            label: Destination
+            children:
+                - type: VariablesListBox
+                  name: dest
+                  isTarget: true
+                  height: small
+                  maxItemCount: 1
+          - type: TargetLayoutBox
+            label: Period (optional)
+            children:
+                - type: VariablesListBox
+                  name: timeVar
+                  isTarget: true
+                  height: small
+                  maxItemCount: 1
+    - type: CollapseBox
+      label: Fixed effects
+      collapsed: false
+      children:
+          - type: CheckBox
+            name: feOrigin
+          - type: CheckBox
+            name: feDest
+          - type: CheckBox
+            name: fePair
+          - type: CheckBox
+            name: feOrigTime
+          - type: CheckBox
+            name: feDestTime
+          - type: CheckBox
+            name: feTime
+    - type: CollapseBox
+      label: Inference
+      collapsed: false
+      children:
+          - type: ComboBox
+            name: cluster
+          - type: TextBox
+            name: level
+            label: Confidence level (%)
+            format: number
+
+    - type: CollapseBox
+      label: Output
+      collapsed: true
+      children:
+          - type: CheckBox
+            name: showGuide
+          - type: CheckBox
+            name: showHelp

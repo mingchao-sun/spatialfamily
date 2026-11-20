@@ -1,0 +1,270 @@
+---
+name: lisa
+title: Local Spatial Autocorrelation
+jrs: '1.1'
+
+items:
+    - name: guide
+      title: Data and setup guide
+      type: Html
+      visible: (showGuide)
+
+    - name: helpText
+      title: Method notes
+      type: Html
+      visible: (showHelp)
+
+    - name: notes
+      title: Notes
+      type: Html
+      visible: true
+
+    - name: counts
+      title: Clusters
+      type: Table
+      refs:
+          - anselin1995
+          - ord1995
+      clearWith:
+          - idVar
+          - xVar
+          - yVar
+          - wSource
+          - wFile
+          - wIdField
+          - wMethod
+          - wK
+          - wDist
+          - wPower
+          - wCutoff
+          - wOrder
+          - wCumul
+          - wSymm
+          - wLonLat
+          - wStyle
+          - var
+          - stat
+          - nperm
+          - seed
+          - alpha
+          - adjust
+      columns:
+          - name: cls
+            title: Class
+            type: text
+          - name: n
+            title: Units
+            type: integer
+          - name: pct
+            title: '%'
+            type: number
+
+    - name: units
+      title: Units
+      type: Table
+      visible: (showUnits)
+      clearWith:
+          - idVar
+          - xVar
+          - yVar
+          - wSource
+          - wFile
+          - wIdField
+          - wMethod
+          - wK
+          - wDist
+          - wPower
+          - wCutoff
+          - wOrder
+          - wCumul
+          - wSymm
+          - wLonLat
+          - wStyle
+          - var
+          - stat
+          - nperm
+          - seed
+          - alpha
+          - adjust
+          - showUnits
+      columns:
+          - name: id
+            title: Unit
+            type: text
+          - name: x
+            title: Value
+            type: number
+          - name: lag
+            title: Neighbour mean
+            type: number
+          - name: stat
+            title: Statistic
+            type: number
+          - name: z
+            title: z
+            type: number
+          - name: p
+            title: p (permutation)
+            type: number
+            format: zto,pvalue
+          - name: padj
+            title: p (adjusted)
+            type: number
+            format: zto,pvalue
+          - name: cls
+            title: Class
+            type: text
+
+    - name: clusterMap
+      title: Cluster map
+      type: Image
+      width: 600
+      height: 500
+      renderFun: .plotMap
+      visible: (map)
+      clearWith:
+          - idVar
+          - xVar
+          - yVar
+          - wSource
+          - wFile
+          - wIdField
+          - wMethod
+          - wK
+          - wDist
+          - wPower
+          - wCutoff
+          - wOrder
+          - wCumul
+          - wSymm
+          - wLonLat
+          - wStyle
+          - var
+          - stat
+          - nperm
+          - seed
+          - alpha
+          - adjust
+          - map
+
+    - name: scatterPlot
+      title: Moran scatterplot
+      type: Image
+      width: 480
+      height: 420
+      renderFun: .plotScatter
+      visible: (scatter)
+      clearWith:
+          - idVar
+          - xVar
+          - yVar
+          - wSource
+          - wFile
+          - wIdField
+          - wMethod
+          - wK
+          - wDist
+          - wPower
+          - wCutoff
+          - wOrder
+          - wCumul
+          - wSymm
+          - wLonLat
+          - wStyle
+          - var
+          - stat
+          - nperm
+          - seed
+          - alpha
+          - adjust
+          - scatter
+
+    - name: saveCluster
+      title: Cluster class
+      type: Output
+      varTitle: LISA cluster
+      varDescription: Local cluster class (0 not significant, 1 High-High, 2 Low-Low, 3 Low-High, 4 High-Low)
+      measureType: nominal
+      clearWith:
+          - idVar
+          - xVar
+          - yVar
+          - wSource
+          - wFile
+          - wIdField
+          - wMethod
+          - wK
+          - wDist
+          - wPower
+          - wCutoff
+          - wOrder
+          - wCumul
+          - wSymm
+          - wLonLat
+          - wStyle
+          - var
+          - stat
+          - nperm
+          - seed
+          - alpha
+          - adjust
+
+    - name: saveStat
+      title: Local statistic
+      type: Output
+      varTitle: Local statistic
+      varDescription: Local Moran's I or Getis-Ord z-score
+      measureType: continuous
+      clearWith:
+          - idVar
+          - xVar
+          - yVar
+          - wSource
+          - wFile
+          - wIdField
+          - wMethod
+          - wK
+          - wDist
+          - wPower
+          - wCutoff
+          - wOrder
+          - wCumul
+          - wSymm
+          - wLonLat
+          - wStyle
+          - var
+          - stat
+          - nperm
+          - seed
+          - alpha
+          - adjust
+
+    - name: saveP
+      title: Pseudo p-value
+      type: Output
+      varTitle: Local p-value
+      varDescription: Permutation pseudo p-value of the local statistic
+      measureType: continuous
+      clearWith:
+          - idVar
+          - xVar
+          - yVar
+          - wSource
+          - wFile
+          - wIdField
+          - wMethod
+          - wK
+          - wDist
+          - wPower
+          - wCutoff
+          - wOrder
+          - wCumul
+          - wSymm
+          - wLonLat
+          - wStyle
+          - var
+          - stat
+          - nperm
+          - seed
+          - alpha
+          - adjust

@@ -1,0 +1,140 @@
+---
+name: gwr
+title: Geographically Weighted Regression
+jas: '1.2'
+version: '1.0.0'
+menuGroup: Spatial
+menuSubgroup: Regression
+menuTitle: Geographically Weighted Regression
+menuSubtitle: Local coefficients that vary over space (GWR)
+
+options:
+    - name: data
+      type: Data
+
+    - name: dep
+      title: Dependent variable
+      type: Variable
+      suggested:
+          - continuous
+      permitted:
+          - numeric
+
+    - name: covs
+      title: Covariates
+      type: Variables
+      suggested:
+          - continuous
+      permitted:
+          - numeric
+
+    - name: xVar
+      title: X / longitude
+      type: Variable
+      suggested:
+          - continuous
+      permitted:
+          - numeric
+
+    - name: yVar
+      title: Y / latitude
+      type: Variable
+      suggested:
+          - continuous
+      permitted:
+          - numeric
+
+    - name: idVar
+      title: Unit id (optional, labels the local table)
+      type: Variable
+      permitted:
+          - numeric
+          - factor
+          - id
+
+    - name: wLonLat
+      title: Coordinates are longitude / latitude (distances in km)
+      type: Bool
+      default: false
+
+    - name: kernel
+      title: Kernel
+      type: List
+      options:
+          - name: bisquare
+            title: Bi-square
+          - name: gaussian
+            title: Gaussian
+          - name: exponential
+            title: Exponential
+          - name: tricube
+            title: Tricube
+          - name: boxcar
+            title: Box-car
+      default: bisquare
+
+    - name: bwType
+      title: Bandwidth type
+      type: List
+      options:
+          - name: adaptive
+            title: Adaptive (number of nearest neighbours)
+          - name: fixed
+            title: Fixed (distance)
+      default: adaptive
+
+    - name: bwMethod
+      title: Bandwidth
+      type: List
+      options:
+          - name: aicc
+            title: Select by AICc
+          - name: cv
+            title: Select by cross-validation
+          - name: manual
+            title: Set manually
+      default: aicc
+
+    - name: bw
+      title: Manual bandwidth
+      type: Number
+      default: 30
+      min: 0
+
+    - name: showLocal
+      title: Table of local estimates
+      type: Bool
+      default: false
+
+    - name: maps
+      title: Maps of the local coefficients
+      type: Bool
+      default: true
+
+    - name: mapStat
+      title: Map shows
+      type: List
+      options:
+          - name: coef
+            title: Local coefficient
+          - name: t
+            title: Local t value
+      default: coef
+
+    - name: showGuide
+      title: Data and setup guide
+      type: Bool
+      default: false
+
+    - name: showHelp
+      title: Method notes
+      type: Bool
+      default: false
+
+    - name: saveR2
+      title: Local R-squared
+      type: Output
+
+    - name: saveResid
+      title: Residuals
+      type: Output

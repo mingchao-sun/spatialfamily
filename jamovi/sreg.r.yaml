@@ -1,0 +1,348 @@
+---
+name: sreg
+title: Spatial Regression
+jrs: '1.1'
+
+items:
+    - name: guide
+      title: Data and setup guide
+      type: Html
+      visible: (showGuide)
+
+    - name: helpText
+      title: Method notes
+      type: Html
+      visible: (showHelp)
+
+    - name: notes
+      title: Notes
+      type: Html
+      visible: true
+
+    - name: coef
+      title: Coefficients
+      type: Table
+      refs:
+          - anselin1988
+          - ord1975
+          - spatialreg
+      clearWith:
+          - idVar
+          - xVar
+          - yVar
+          - wSource
+          - wFile
+          - wIdField
+          - wMethod
+          - wK
+          - wDist
+          - wPower
+          - wCutoff
+          - wOrder
+          - wCumul
+          - wSymm
+          - wLonLat
+          - wStyle
+          - dep
+          - covs
+          - noLag
+          - model
+          - level
+      columns:
+          - name: term
+            title: ''
+            type: text
+          - name: est
+            title: Estimate
+            type: number
+          - name: se
+            title: Std. error
+            type: number
+          - name: z
+            title: z / t
+            type: number
+          - name: p
+            title: p
+            type: number
+            format: zto,pvalue
+          - name: lo
+            title: Lower
+            type: number
+          - name: hi
+            title: Upper
+            type: number
+
+    - name: fit
+      title: Model fit
+      type: Table
+      clearWith:
+          - idVar
+          - xVar
+          - yVar
+          - wSource
+          - wFile
+          - wIdField
+          - wMethod
+          - wK
+          - wDist
+          - wPower
+          - wCutoff
+          - wOrder
+          - wCumul
+          - wSymm
+          - wLonLat
+          - wStyle
+          - dep
+          - covs
+          - noLag
+          - model
+      columns:
+          - name: item
+            title: ''
+            type: text
+          - name: value
+            title: ''
+            type: number
+          - name: p
+            title: p
+            type: number
+            format: zto,pvalue
+
+    - name: lmTests
+      title: Diagnostics for spatial dependence in the OLS residuals
+      type: Table
+      visible: (diag)
+      refs:
+          - anselin1996
+      clearWith:
+          - idVar
+          - xVar
+          - yVar
+          - wSource
+          - wFile
+          - wIdField
+          - wMethod
+          - wK
+          - wDist
+          - wPower
+          - wCutoff
+          - wOrder
+          - wCumul
+          - wSymm
+          - wLonLat
+          - wStyle
+          - dep
+          - covs
+          - noLag
+          - diag
+      columns:
+          - name: test
+            title: Test
+            type: text
+          - name: stat
+            title: Statistic
+            type: number
+          - name: df
+            title: df
+            type: integer
+          - name: p
+            title: p
+            type: number
+            format: zto,pvalue
+
+    - name: effectsTable
+      title: Average effects of the covariates
+      type: Table
+      visible: (effects)
+      refs:
+          - lesage2009
+      clearWith:
+          - idVar
+          - xVar
+          - yVar
+          - wSource
+          - wFile
+          - wIdField
+          - wMethod
+          - wK
+          - wDist
+          - wPower
+          - wCutoff
+          - wOrder
+          - wCumul
+          - wSymm
+          - wLonLat
+          - wStyle
+          - dep
+          - covs
+          - noLag
+          - model
+          - effects
+          - nsim
+          - seed
+      columns:
+          - name: term
+            title: Covariate
+            type: text
+          - name: kind
+            title: Effect
+            type: text
+          - name: est
+            title: Estimate
+            type: number
+          - name: se
+            title: Std. error
+            type: number
+          - name: z
+            title: z
+            type: number
+          - name: p
+            title: p
+            type: number
+            format: zto,pvalue
+
+    - name: moranTable
+      title: Moran's I of the residuals
+      type: Table
+      rows: 1
+      visible: (moranRes)
+      clearWith:
+          - idVar
+          - xVar
+          - yVar
+          - wSource
+          - wFile
+          - wIdField
+          - wMethod
+          - wK
+          - wDist
+          - wPower
+          - wCutoff
+          - wOrder
+          - wCumul
+          - wSymm
+          - wLonLat
+          - wStyle
+          - dep
+          - covs
+          - noLag
+          - model
+          - moranRes
+      columns:
+          - name: stat
+            title: Statistic
+            type: number
+          - name: exp
+            title: Expected
+            type: number
+          - name: z
+            title: z
+            type: number
+          - name: p
+            title: p
+            type: number
+            format: zto,pvalue
+
+    - name: compareTable
+      title: Comparison of models
+      type: Table
+      visible: (compare)
+      clearWith:
+          - idVar
+          - xVar
+          - yVar
+          - wSource
+          - wFile
+          - wIdField
+          - wMethod
+          - wK
+          - wDist
+          - wPower
+          - wCutoff
+          - wOrder
+          - wCumul
+          - wSymm
+          - wLonLat
+          - wStyle
+          - dep
+          - covs
+          - noLag
+          - compare
+      columns:
+          - name: model
+            title: Model
+            type: text
+          - name: rho
+            title: rho
+            type: number
+          - name: lambda
+            title: lambda
+            type: number
+          - name: ll
+            title: Log-likelihood
+            type: number
+          - name: k
+            title: Parameters
+            type: integer
+          - name: aic
+            title: AIC
+            type: number
+          - name: bic
+            title: BIC
+            type: number
+
+    - name: saveFitted
+      title: Fitted values
+      type: Output
+      varTitle: Spatial fitted
+      varDescription: Fitted values of the spatial regression (including the spatial lag of the dependent variable)
+      measureType: continuous
+      clearWith:
+          - idVar
+          - xVar
+          - yVar
+          - wSource
+          - wFile
+          - wIdField
+          - wMethod
+          - wK
+          - wDist
+          - wPower
+          - wCutoff
+          - wOrder
+          - wCumul
+          - wSymm
+          - wLonLat
+          - wStyle
+          - dep
+          - covs
+          - noLag
+          - model
+
+    - name: saveResid
+      title: Residuals
+      type: Output
+      varTitle: Spatial residuals
+      varDescription: Residuals of the spatial regression
+      measureType: continuous
+      clearWith:
+          - idVar
+          - xVar
+          - yVar
+          - wSource
+          - wFile
+          - wIdField
+          - wMethod
+          - wK
+          - wDist
+          - wPower
+          - wCutoff
+          - wOrder
+          - wCumul
+          - wSymm
+          - wLonLat
+          - wStyle
+          - dep
+          - covs
+          - noLag
+          - model

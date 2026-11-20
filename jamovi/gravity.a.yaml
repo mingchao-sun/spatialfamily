@@ -1,0 +1,118 @@
+---
+name: gravity
+title: Gravity Model (PPML)
+jas: '1.2'
+version: '1.0.0'
+menuGroup: Spatial
+menuSubgroup: Gravity
+menuTitle: Gravity Model (PPML)
+menuSubtitle: Poisson pseudo-ML with high-dimensional fixed effects
+
+options:
+    - name: data
+      type: Data
+
+    - name: dep
+      title: Flow
+      type: Variable
+      suggested:
+          - continuous
+      permitted:
+          - numeric
+
+    - name: covs
+      title: Covariates (e.g. log distance, contiguity)
+      type: Variables
+      suggested:
+          - continuous
+          - nominal
+      permitted:
+          - numeric
+          - factor
+
+    - name: origin
+      title: Origin
+      type: Variable
+      permitted:
+          - numeric
+          - factor
+          - id
+
+    - name: dest
+      title: Destination
+      type: Variable
+      permitted:
+          - numeric
+          - factor
+          - id
+
+    - name: timeVar
+      title: Period (optional)
+      type: Variable
+      permitted:
+          - numeric
+          - factor
+          - id
+
+    - name: feOrigin
+      title: Origin fixed effects
+      type: Bool
+      default: true
+
+    - name: feDest
+      title: Destination fixed effects
+      type: Bool
+      default: true
+
+    - name: fePair
+      title: Origin-destination pair fixed effects
+      type: Bool
+      default: false
+
+    - name: feOrigTime
+      title: Origin x period fixed effects
+      type: Bool
+      default: false
+
+    - name: feDestTime
+      title: Destination x period fixed effects
+      type: Bool
+      default: false
+
+    - name: feTime
+      title: Period fixed effects
+      type: Bool
+      default: false
+
+    - name: cluster
+      title: Standard errors
+      type: List
+      options:
+          - name: robust
+            title: Heteroskedasticity-robust
+          - name: origin
+            title: Clustered by origin
+          - name: dest
+            title: Clustered by destination
+          - name: pair
+            title: Clustered by origin-destination pair
+          - name: twoway
+            title: Two-way clustered (origin and destination)
+      default: robust
+
+    - name: level
+      title: Confidence level (%)
+      type: Number
+      default: 95
+      min: 50
+      max: 99.9
+
+    - name: showGuide
+      title: Data and setup guide
+      type: Bool
+      default: false
+
+    - name: showHelp
+      title: Method notes
+      type: Bool
+      default: false

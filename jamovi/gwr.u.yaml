@@ -1,0 +1,91 @@
+name: gwr
+title: Geographically Weighted Regression
+jus: '3.0'
+stage: 0
+compilerMode: tame
+children:
+    - type: VariableSupplier
+      persistentItems: false
+      stretchFactor: 1
+      children:
+          - type: TargetLayoutBox
+            label: Dependent variable
+            children:
+                - type: VariablesListBox
+                  name: dep
+                  isTarget: true
+                  maxItemCount: 1
+          - type: TargetLayoutBox
+            label: Covariates
+            children:
+                - type: VariablesListBox
+                  name: covs
+                  isTarget: true
+          - type: TargetLayoutBox
+            label: X / longitude
+            children:
+                - type: VariablesListBox
+                  name: xVar
+                  isTarget: true
+                  height: small
+                  maxItemCount: 1
+          - type: TargetLayoutBox
+            label: Y / latitude
+            children:
+                - type: VariablesListBox
+                  name: yVar
+                  isTarget: true
+                  height: small
+                  maxItemCount: 1
+          - type: TargetLayoutBox
+            label: Unit id (optional, labels the local table)
+            children:
+                - type: VariablesListBox
+                  name: idVar
+                  isTarget: true
+                  height: small
+                  maxItemCount: 1
+    - type: CheckBox
+      name: wLonLat
+    - type: CollapseBox
+      label: Kernel and bandwidth
+      collapsed: false
+      children:
+          - type: ComboBox
+            name: kernel
+          - type: ComboBox
+            name: bwType
+          - type: ComboBox
+            name: bwMethod
+          - type: TextBox
+            name: bw
+            label: Manual bandwidth (neighbours, or distance)
+            format: number
+            enable: (bwMethod:manual)
+    - type: CollapseBox
+      label: Results
+      collapsed: false
+      children:
+          - type: CheckBox
+            name: maps
+          - type: ComboBox
+            name: mapStat
+          - type: CheckBox
+            name: showLocal
+    - type: CollapseBox
+      label: Save to the dataset
+      collapsed: true
+      children:
+          - type: Output
+            name: saveR2
+          - type: Output
+            name: saveResid
+
+    - type: CollapseBox
+      label: Output
+      collapsed: true
+      children:
+          - type: CheckBox
+            name: showGuide
+          - type: CheckBox
+            name: showHelp
