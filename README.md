@@ -34,10 +34,9 @@ jmvtools::install(home = "C:/Program Files/jamovi 28.17.0.0")
 ```
 
 ## Use from R (Rj editor, scripts)
-Every analysis is also an R function, for example
+Every analysis is also an R function. Pass `NULL` for the arguments you do not use, because they have no default values. For example, after installing the module,
 ```r
-spatialfamily::sreg(data = d, dep = "CRIME", covs = c("INC", "HOVAL"), idVar = "id", wSource = "adjacency",
-                    wFile = "columbus_edges.csv", model = "sar")
+spatialfamily::moran(data = d, vars = "CRIME", idVar = NULL, xVar = "X", yVar = "Y")
 ```
 
 ## Data format
