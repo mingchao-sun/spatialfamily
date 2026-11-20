@@ -1,7 +1,7 @@
 Package: spatialfamily
 Type: Package
 Title: Spatial Statistics and Spatial Econometrics Family for jamovi
-Version: 0.2.0
+Version: 1.0.0
 Author: Mingchao Sun
 Maintainer: Mingchao Sun <mingchao.sun@hotmail.com>
 URL: https://github.com/mingchao-sun/spatialfamily
